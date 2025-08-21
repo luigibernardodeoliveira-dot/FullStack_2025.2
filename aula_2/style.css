@@ -1,0 +1,15 @@
+p{
+    color:red (187, 255, 0)
+}
+
+#d1{background-color: blue;}
+
+.blue{background-color: brown;}
+
+.size18{font-size:18pt;}
+
+div p {font-size: 40pt;}
+
+div:hover {background-color: violet;}
+
+a:visited {color: green;}
