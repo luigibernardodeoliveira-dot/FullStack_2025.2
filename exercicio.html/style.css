@@ -3,10 +3,7 @@ font-family: Arial, Helvetica, sans-serif;
 background-color: rgb(54, 43, 102);
 color:aliceblue
 }
-.img{
-    border-radius: 50;
-}
- 
+
 div:hover{
 background-color:rgb(255, 0, 0);}
 .blue{color: rgb(0, 162, 255);
@@ -15,3 +12,6 @@ font: size 18px; ;}
 .blake{color: rgb(0, 251, 255);}
  
 .lupo{color:rgb(252, 4, 4)}
+ 
+#id{background-color: rgb(43, 226, 211);
+}
