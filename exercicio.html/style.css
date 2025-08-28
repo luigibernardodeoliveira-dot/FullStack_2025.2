@@ -1,13 +1,15 @@
 body{
-
 font-family: Arial, Helvetica, sans-serif;
-
+background-color: rgb(54, 43, 102);
+color:aliceblue
 }
-
-
+.img{
+    border-radius: 50;
+}
+ 
 div:hover{
-background-color:rgb(51, 50, 50);}
-.blue{color: blue;
+background-color:rgb(255, 0, 0);}
+.blue{color: rgb(0, 162, 255);
 font: size 18px; ;}
 
 .blake{color: rgb(0, 251, 255);}
