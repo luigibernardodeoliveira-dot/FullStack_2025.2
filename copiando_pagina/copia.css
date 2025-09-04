@@ -49,9 +49,9 @@ body{
     text-align: center;
 }
 #d7{
-    height: 500px;
-    width: 350px;
-    margin: 70px;
+    height: 450px;
+    width: 300px;
+    margin: 90px;
 }
 #d8{
     margin: 150px;
@@ -61,14 +61,12 @@ body{
 }
 #d9{ 
     border: dashed 3px; color: red;
-    margin: 250px;
-    height: 150px;
-    left: 270px;
     position: relative;
-    
+    left: 525px;
 }
 #d10{
     border: solid 3px;
+    
 }
 #d11{
     background-color:yellow;
@@ -94,13 +92,13 @@ body{
     position: absolute;
     width: 125px;
     height: 125px;
-    top: 2925px;
+    top: 2350px;
     left: 40px;    
 }
 #d14{
     position: absolute;
     width: 125px;
     height: 125px;
-    top: 2925px;
+    top: 2350px;
     left: 1350px;    
 }
