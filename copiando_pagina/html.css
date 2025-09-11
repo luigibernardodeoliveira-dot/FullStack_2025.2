@@ -1,0 +1,80 @@
+O Flexbox é uma ferramenta poderosa do CSS para criar layouts flexíveis e responsivos. Ele organiza elementos em um contêiner flexível,
+permitindo controle sobre alinhamento, espaçamento e distribuição. Aqui está um resumo das principais funções e propriedades do Flexbox:
+Propriedades do Contêiner Flexível (Pai)
+display: flex;
+Ativa o Flexbox no contêiner, transformando os filhos em itens flexíveis.
+flex-direction
+Define a direção dos itens no contêiner:
+row (padrão): Alinha os itens na horizontal.
+row-reverse: Horizontal, mas invertido.
+column: Alinha os itens na vertical.
+column-reverse: Vertical, mas invertido.
+justify-content
+Controla o alinhamento dos itens no eixo principal:
+flex-start (padrão): Alinha ao início.
+flex-end: Alinha ao final.
+center: Centraliza.
+space-between: Espaço igual entre os itens.
+space-around: Espaço igual ao redor dos itens.
+space-evenly: Espaço igual entre e ao redor.
+align-items
+2025/9/11 11:2
+Bing Writer • Generated with AI 2/4
+Alinha os itens no eixo transversal:
+stretch (padrão): Estica os itens.
+flex-start: Alinha ao início.
+flex-end: Alinha ao final.
+center: Centraliza.
+baseline: Alinha pela linha de base do texto.
+align-content
+Alinha várias linhas de itens (quando há quebra de linha):
+stretch (padrão): Estica as linhas.
+flex-start: Alinha ao início.
+flex-end: Alinha ao final.
+center: Centraliza.
+space-between: Espaço igual entre as linhas.
+space-around: Espaço igual ao redor das linhas.
+flex-wrap
+Define se os itens devem quebrar para uma nova linha:
+nowrap (padrão): Não quebra.
+wrap: Quebra para uma nova linha.
+wrap-reverse: Quebra, mas inverte a ordem.
+Propriedades dos Itens Flexíveis (Filhos)
+2025/9/11 11:2
+Bing Writer • Generated with AI 3/4
+flex
+Atalho para flex-grow, flex-shrink e flex-basis:
+Exemplo: flex: 1; (cresce igualmente).
+flex-grow
+Define quanto o item pode crescer em relação aos outros:
+0 (padrão): Não cresce.
+1: Cresce proporcionalmente.
+flex-shrink
+Define quanto o item pode encolher:
+0: Não encolhe.
+1 (padrão): Encolhe proporcionalmente.
+flex-basis
+Define o tamanho inicial do item antes de crescer ou encolher:
+Exemplo: flex-basis: 200px;.
+align-self
+Alinha individualmente um item no eixo transversal (sobrescreve align-items):
+Valores: auto, flex-start, flex-end, center, baseline, stretch.
+order
+Define a ordem dos itens:
+Padrão: 0.
+Valores positivos ou negativos alteram a posição.
+2025/9/11 11:2
+Bing Writer • Generated with AI 4/4
+Exemplo Prático
+.container {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ align-items: center;
+}
+.item {
+ flex: 1;
+ align-self: flex-end;
+}
+Esse exemplo cria um contêiner com itens distribuídos igualmente, alinhados ao centro no eixo transversal, mas com um item alinhado ao final.
+Se precisar de mais detalhes ou exemplos, é só avisar! 
