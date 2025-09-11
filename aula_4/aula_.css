@@ -1,0 +1,28 @@
+#conteiner{
+    background-color: rgb(53, 65, 65);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.itens{
+    background-color: blue;
+    padding: 10px;
+    margin: 10px;
+}
+#d5{
+    order: 1;
+}
+
+#d7{
+    order: -1;
+    flex-grow: 3
+
+}
+#d8{
+    flex-basis: 100px;
+}
+#d12{
+    align-self: flex-end;
+}

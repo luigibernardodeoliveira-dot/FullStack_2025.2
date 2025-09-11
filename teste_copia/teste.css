@@ -1,0 +1,20 @@
+#d1{
+    text-align: center;
+    background-color: red;
+    width: 100px;
+    height: 20px;
+}
+.menu{
+    position: absolute;
+    text-align: center;
+    word-spacing: 50px;
+}
+.teste{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:end;
+    align-content: center;
+    word-spacing: 40px;
+}
