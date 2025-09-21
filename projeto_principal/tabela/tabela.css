@@ -9,13 +9,14 @@
     justify-content: center;
     align-items: center;
     flex-direction:column;
-    border: 3px color(red);
     background-color: rgb(78, 122, 255);
-    border-style: solid;
+    border-style:solid;
     padding: 20px;
     font-size: 20px;
     margin-bottom: 40px;
     margin-left: 550px;
     margin-right: 550px;
-    border-radius: 10%;
+    border-radius: 20%;
+    max-width: 1100px;
 }
+  
