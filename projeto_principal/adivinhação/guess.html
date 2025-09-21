@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <link rel="stylesheet" href="guess.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Jogo de Adivinhação</h1>
+        <p>Digite um número entre 0 e 99:</p>
+        
+        <input type="number" id="dgt_num" placeholder="Seu palpite">
+        <button onclick ="Guess()">Chutar</button>
+
+        <div id="resultado" class="resultado"></div>
+
+        <h3>Tentativas muito baixas:</h3>
+        <div id="tentativa_pqn" class="tentativas"></div>
+
+        <h3>Tentativas muito altas:</h3>
+        <div id="tentativa_grd" class="tentativas"></div>
+    </div>
+
+    <script src="guess.js"></script>
+</body>
+</html>

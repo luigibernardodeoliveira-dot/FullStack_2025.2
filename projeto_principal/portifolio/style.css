@@ -1,0 +1,50 @@
+body{
+font-family: Arial, Helvetica, sans-serif;
+background-color: rgb(54, 43, 102);
+color:aliceblue
+}
+.nome{
+    display: flex;
+    justify-content: center;
+}
+
+.conteiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+.perfil{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    
+}
+.bio{
+
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sumario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    border: 3px color(red);
+    background-color: royalblue;
+    border-style: solid;
+    padding: 20px;
+    font-size: 20px;
+    margin-bottom: 40px;
+    margin-left: 550px;
+    margin-right: 550px;
+    border-radius: 10%;
+}
