@@ -16,12 +16,12 @@ function Guess() {
 
   else if (chute < valor_num) {
     document.getElementById("tentativa_pqn").style.setProperty("background-color", "red");
-    document.getElementById("tentativa_pqn").innerHTML += `${chute} , `;
+    document.getElementById("tentativa_pqn").innerHTML += `${chute}  `;
   }
 
   
   else if (chute > valor_num) {
     document.getElementById("tentativa_grd").style.setProperty("background-color", "red");
-    document.getElementById("tentativa_grd").innerHTML += `${chute} ,`;
+    document.getElementById("tentativa_grd").innerHTML += `${chute} `;
   }
 }
