@@ -1,0 +1,23 @@
+{
+  "name": "servidor",
+  "version": "0.1.0",
+  "description": "Meu primeiro projeto de fullstack",
+  "main": "servidor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luigibernardodeoliveira-dot/FullStack_2025.2.git"
+  },
+  "author": "Luigi Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luigibernardodeoliveira-dot/FullStack_2025.2/issues"
+  },
+  "homepage": "https://github.com/luigibernardodeoliveira-dot/FullStack_2025.2#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^5.1.0"
+  }
+}
