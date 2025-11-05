@@ -22,11 +22,12 @@ const carro = {
 
         
         ctx.drawImage(this.img, x_centralizado, y_centralizado, largura, altura);
+        carro.img.src = 'bmw.png';
     }
 };
 
 
-carro.img.src = 'bmw.png';
+
 
 
 carro.img.onload = function() {
