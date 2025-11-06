@@ -1,34 +1,93 @@
-const express = require("express");
-const http = require("http");
-const path = require("path");
-const colors = require("colors");
+require("colors");
 
-const app = express();
+var http = require("http");
+var express = require("express");
+var bodyParser = require("body-parser")
+var mongodb = require("mongodb");
 
-// Servir todas as páginas estáticas (HTML, CSS, JS, imagens, etc)
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "portifolio"))); // se tiver páginas nessa pasta também
+const MongoClient = mongodb.MongoClient;
+const uri = 'mongodb://localhost:27017';
+const client = new MongoClient(uri, { useNewUrlParser: true });
 
-// Rotas específicas (opcional)
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
 
-app.get("/contato", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "contato.html"));
-});
+var app = express();
+app.use(express.static("./public"));
+app.use(bodyParser.urlencoded({extended: false }))
+app.use(bodyParser.json())
+app.set('view engine', 'ejs')
+app.set('views', './views');
 
-app.get("/project", (req, res) => {
-  res.sendFile(path.join(__dirname, "portifolio", "progetc.html"));
-});
+var server = http.createServer(app);
+server.listen(80);
 
-// Criar servidor HTTP
-const server = http.createServer(app);
+console.log("Servidor rodando ...".rainbow);
 
-// Porta 80 (HTTP padrão)
-const PORT = 80;
+////////////////////////////////////////////// 
 
-// Iniciar servidor
-server.listen(PORT, "0.0.0.0", () => {
-  console.log(`Servidor rodando na porta ${PORT}`.rainbow);
-});
+
+app.get('/', function(requisicao, resposta){
+    resposta.redirect('contato.html');localhost
+})
+
+app.get('/cadastrar',function(requisicao, resposta){
+    console.log('Requisição recebida por get');
+
+    let nome = requisicao.query.nome;
+    let email = requisicao.query.email;
+    let telefone = requisicao.query.telefone;
+    let nascimento = requisicao.query.nascimento;
+    console.log(nome, email, telefone, nascimento)
+    resposta.render('resposta.ejs', {metodo:"GET", nome, email, telefone, nascimento});
+})
+
+app.post('/cadastrar',function(requisicao, resposta){
+    console.log('Requisição recebida por post');
+
+    let nome = requisicao.body.nome;
+    let email = requisicao.body.email;
+    let telefone = requisicao.body.telefone;
+    let nascimento = requisicao.body.nascimento;
+    console.log(nome, email, telefone, nascimento)
+    resposta.render('resposta.ejs', {metodo:"POST", nome, email, telefone, nascimento});
+})
+
+app.get('/for', function(requisicao, resposta){
+    let qtde = requisicao.query.qtde;
+    console.log(qtde);
+    resposta.render('for.ejs', {qtde})
+})
+
+
+////////////////////////////////////////////// 
+
+var dbo = client.db("exemplo_bd");
+var usuarios = dbo.collection("usuarios");
+
+  app.post("/cadastrar_usuario", function(req, resp) {
+    var data = { db_nome: req.body.nome, db_login: req.body.login, db_senha: req.body.senha };
+
+    usuarios.insertOne(data, function (err) {
+      if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao cadastrar usuário!"})
+      }else {
+        resp.render('resposta_usuario', {resposta: "Usuário cadastrado com sucesso!"})        
+      };
+    });
+   
+  });
+
+  app.post("/logar_usuario", function(req, resp) {
+    var data = {db_login: req.body.login, db_senha: req.body.senha };
+
+    usuarios.find(data).toArray(function(err, items) {
+      console.log(items);
+      if (items.length == 0) {
+        resp.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
+      }else if (err) {
+        resp.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
+      }else {
+        resp.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
+      };
+    });
+
+  });
