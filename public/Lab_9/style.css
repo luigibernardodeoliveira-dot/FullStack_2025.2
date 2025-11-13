@@ -1,120 +1,90 @@
-/* === RESET E BASE === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  padding: 40px 20px;
-  color: #333;
-}
-
-/* === CONTAINER CENTRAL === */
-main, form {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 600px;
-}
-
-/* === TÍTULOS === */
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #005fcc;
-}
-
-/* === FORMULÁRIO === */
-form label {
-  font-weight: bold;
-  display: block;
-  margin-top: 15px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-button {
-  display: block;
-  width: 100%;
-  background-color: #0078ff;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2c2c54, #474787);
   color: #fff;
-  font-size: 16px;
-  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+  margin-top: 60px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* ==== Títulos ==== */
+h1, h2 {
+  color: #ffda79;
+}
+
+/* ==== Botões ==== */
+button {
+  background-color: #34ace0;
   border: none;
-  padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
+  padding: 12px 25px;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
 }
 
 button:hover {
-  background-color: #005fcc;
+  background-color: #227093;
 }
 
-/* === LINKS === */
-a {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #0078ff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* === POSTS === */
-.post {
-  background: white;
-  padding: 20px;
-  margin: 15px 0;
+/* ==== Inputs e Textareas ==== */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin: 8px 0;
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* ==== Postagens ==== */
+.post {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 25px;
+  text-align: left;
 }
 
 .post h2 {
-  color: #005fcc;
-  margin-bottom: 10px;
+  margin-top: 0;
+  color: #ffb142;
 }
 
 .post p {
-  line-height: 1.6;
-  color: #444;
+  line-height: 1.5;
 }
 
-.post small {
-  display: block;
-  margin-top: 10px;
-  color: #666;
-  font-size: 13px;
-  text-align: right;
+.resumo {
+  font-style: italic;
+  color: #d2dae2;
 }
 
-/* === RESPONSIVO === */
-@media (max-width: 600px) {
-  body {
-    padding: 20px 10px;
-  }
-
-  form, main {
-    padding: 20px;
-  }
+/* ==== Links ==== */
+a {
+  text-decoration: none;
 }
