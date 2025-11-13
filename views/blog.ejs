@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../lab_9/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Blog Online</h1>
-    <a href="/cadastrar_post" class="btn">+ Novo Post</a>
+  <h1>Postagens</h1>
+  <a href="/"><button>Novo Post</button></a>
+  <hr>
 
-    <% if (posts.length > 0) { %>
-      <% posts.forEach(post => { %>
-        <div class="post">
-          <h2><%= post.titulo %></h2>
-          <p><strong><%= post.resumo %></strong></p>
-          <p><%= post.conteudo %></p>
-        </div>
-      <% }) %>
-    <% } else { %>
-      <p>Nenhum post cadastrado ainda.</p>
-    <% } %>
-  </div>
+  <% if (posts.length === 0) { %>
+    <p>Nenhum post encontrado </p>
+  <% } else { %>
+    <% posts.forEach(post => { %>
+      <div class="post">
+        <h2><%= post.titulo %></h2>
+        <p><%= post.conteudo %></p>
+        <small><%= new Date(post.data).toLocaleString() %></small>
+        <hr>
+      </div>
+    <% }) %>
+  <% } %>
 </body>
 </html>
