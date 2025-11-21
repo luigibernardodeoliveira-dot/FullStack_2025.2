@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('layout', { body: `
+  <section>
+    <h2>Edição de carro</h2>
+    <p>Regra: se você preencher um campo com 0, o valor antigo será mantido.</p>
+    <form action="/carros/editar/${carro._id}" method="POST" class="form-grid" id="form-edicao">
+      <label>Marca
+        <input type="text" name="marca" value="${carro.marca}" />
+      </label>
+      <label>Modelo
+        <input type="text" name="modelo" value="${carro.modelo}" />
+      </label>
+      <label>Ano
+        <input type="number" name="ano" value="${carro.ano}" />
+      </label>
+      <label>Preço (R$)
+        <input type="number" step="0.01" name="preco" value="${carro.preco}" />
+      </label>
+      <button type="submit" class="btn">Salvar</button>
+    </form>
+  </section>
+` }) %>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('layout', { body: `
+  <section>
+    <h2>Remoção de carros</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Ano</th>
+          <th>Preço (R$)</th>
+          <th>Vendido?</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${carros.map(c => `
+          <tr>
+            <td>${c.marca}</td>
+            <td>${c.modelo}</td>
+            <td>${c.ano}</td>
+            <td>${c.preco.toFixed(2)}</td>
+            <td>${c.vendido ? 'Sim' : 'Não'}</td>
+            <td>
+              <form action="/carros/remover/${c._id}?_method=DELETE" method="POST" onsubmit="return confirm('Remover este carro?')">
+                <button type="submit" class="btn btn-danger">Remover</button>
+              </form>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </section>
+` }) %>
+
+</body>
+</html>

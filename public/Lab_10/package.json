@@ -1,0 +1,22 @@
+{
+  "name": "carros-app",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de venda de carros",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Luigi",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "mongoose": "^7.6.0",
+    "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

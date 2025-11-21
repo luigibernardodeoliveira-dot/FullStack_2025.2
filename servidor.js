@@ -1,93 +1,95 @@
-require("colors");
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
 
-var http = require("http");
-var express = require("express");
-var bodyParser = require("body-parser")
-var mongodb = require("mongodb");
+const Usuario = require("./models/Usuario");
+const Carro = require("./models/Carro");
 
-const MongoClient = mongodb.MongoClient;
-const uri = 'mongodb://localhost:27017';
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const app = express();
+const PORT = 80;
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public", "Lab_10")));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-var app = express();
-app.use(express.static("./public"));
-app.use(bodyParser.urlencoded({extended: false }))
-app.use(bodyParser.json())
-app.set('view engine', 'ejs')
-app.set('views', './views');
+// ====================== ROTAS =====================
 
-var server = http.createServer(app);
-server.listen(80);
+// página inicial
+app.get("/", (req, res) => {
+    res.render("index");
+});
 
-console.log("Servidor rodando ...".rainbow);
+// cadastro usuario
+app.get("/cadastro_usuario", (req, res) => {
+    res.render("cadastro_usuario");
+});
 
-////////////////////////////////////////////// 
+app.post("/cadastro_usuario", async (req, res) => {
+    await Usuario.create(req.body);
+    res.redirect("/");
+});
 
+// login
+app.get("/login", (req, res) => {
+    res.render("login");
+});
 
-app.get('/', function(requisicao, resposta){
-    resposta.redirect('contato.html');localhost
-})
+// listar carros
+app.get("/carros", async (req, res) => {
+    const carros = await Carro.find();
+    res.render("listar_carros", { carros });
+});
 
-app.get('/cadastrar',function(requisicao, resposta){
-    console.log('Requisição recebida por get');
+// gerenciar carros
+app.get("/gerenciar", async (req, res) => {
+    const carros = await Carro.find();
+    res.render("gerenciar_carros", { carros });
+});
 
-    let nome = requisicao.query.nome;
-    let email = requisicao.query.email;
-    let telefone = requisicao.query.telefone;
-    let nascimento = requisicao.query.nascimento;
-    console.log(nome, email, telefone, nascimento)
-    resposta.render('resposta.ejs', {metodo:"GET", nome, email, telefone, nascimento});
-})
+// cadastrar carro
+app.get("/carros/cadastrar", (req, res) => {
+    res.render("cadastrar_carro");
+});
 
-app.post('/cadastrar',function(requisicao, resposta){
-    console.log('Requisição recebida por post');
+app.post("/carros/cadastrar", async (req, res) => {
+    await Carro.create(req.body);
+    res.redirect("/gerenciar");
+});
 
-    let nome = requisicao.body.nome;
-    let email = requisicao.body.email;
-    let telefone = requisicao.body.telefone;
-    let nascimento = requisicao.body.nascimento;
-    console.log(nome, email, telefone, nascimento)
-    resposta.render('resposta.ejs', {metodo:"POST", nome, email, telefone, nascimento});
-})
+// atualizar carro
+app.get("/carros/atualizar/:id", async (req, res) => {
+    const carro = await Carro.findById(req.params.id);
+    res.render("atualizar_carro", { carro });
+});
 
-app.get('/for', function(requisicao, resposta){
-    let qtde = requisicao.query.qtde;
-    console.log(qtde);
-    resposta.render('for.ejs', {qtde})
-})
+app.post("/carros/atualizar/:id", async (req, res) => {
+    await Carro.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/gerenciar");
+});
 
+// remover carro
+app.get("/carros/remover/:id", async (req, res) => {
+    const carro = await Carro.findById(req.params.id);
+    res.render("remover_carro", { carro });
+});
 
-////////////////////////////////////////////// 
+app.post("/carros/remover/:id", async (req, res) => {
+    await Carro.findByIdAndDelete(req.params.id);
+    res.redirect("/gerenciar");
+});
 
-var dbo = client.db("exemplo_bd");
-var usuarios = dbo.collection("usuarios");
+// vender carro
+app.get("/carros/vender/:id", async (req, res) => {
+    const carro = await Carro.findById(req.params.id);
 
-  app.post("/cadastrar_usuario", function(req, resp) {
-    var data = { db_nome: req.body.nome, db_login: req.body.login, db_senha: req.body.senha };
+    if (carro.qtde_disponivel > 0) {
+        carro.qtde_disponivel--;
+        await carro.save();
+    }
 
-    usuarios.insertOne(data, function (err) {
-      if (err) {
-        resp.render('resposta_usuario', {resposta: "Erro ao cadastrar usuário!"})
-      }else {
-        resp.render('resposta_usuario', {resposta: "Usuário cadastrado com sucesso!"})        
-      };
-    });
-   
-  });
+    res.redirect("/carros");
+});
 
-  app.post("/logar_usuario", function(req, resp) {
-    var data = {db_login: req.body.login, db_senha: req.body.senha };
-
-    usuarios.find(data).toArray(function(err, items) {
-      console.log(items);
-      if (items.length == 0) {
-        resp.render('resposta_usuario', {resposta: "Usuário/senha não encontrado!"})
-      }else if (err) {
-        resp.render('resposta_usuario', {resposta: "Erro ao logar usuário!"})
-      }else {
-        resp.render('resposta_usuario', {resposta: "Usuário logado com sucesso!"})        
-      };
-    });
-
-  });
+// iniciar servidor
+app.listen(PORT, () => console.log("Servidor rodando na porta 80"));

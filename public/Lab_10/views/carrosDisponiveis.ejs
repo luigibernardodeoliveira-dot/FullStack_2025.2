@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('layout', { body: `
+  <section>
+    <h2>Carros disponíveis</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Ano</th>
+          <th>Preço (R$)</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="lista-carros">
+        ${carros.map(c => `
+          <tr>
+            <td>${c.marca}</td>
+            <td>${c.modelo}</td>
+            <td>${c.ano}</td>
+            <td>${c.preco.toFixed(2)}</td>
+            <td>
+              <a class="btn" href="/carros/venda/${c._id}">Vender</a>
+              <a class="btn" href="/carros/editar/${c._id}">Editar</a>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>Adicionar rápido (JS)</h3>
+    <form id="form-rapido">
+      <input type="text" name="marca" placeholder="Marca" required />
+      <input type="text" name="modelo" placeholder="Modelo" required />
+      <input type="number" name="ano" placeholder="Ano" required />
+      <input type="number" step="0.01" name="preco" placeholder="Preço" required />
+      <button type="submit" class="btn">Mostrar na tabela</button>
+    </form>
+  </section>
+` }) %>
+
+</body>
+</html>
